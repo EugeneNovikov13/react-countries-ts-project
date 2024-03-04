@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-countries-ts-project/static/css/main.7203ef6a.css",
+    "main.js": "/react-countries-ts-project/static/js/main.daa2c94b.js",
+    "index.html": "/react-countries-ts-project/index.html",
+    "main.7203ef6a.css.map": "/react-countries-ts-project/static/css/main.7203ef6a.css.map",
+    "main.daa2c94b.js.map": "/react-countries-ts-project/static/js/main.daa2c94b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7203ef6a.css",
+    "static/js/main.daa2c94b.js"
+  ]
+}
