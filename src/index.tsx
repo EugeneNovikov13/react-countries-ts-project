@@ -15,7 +15,7 @@ const root = ReactDOMClient.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/react-countries-ts-project">
         <App />
       </BrowserRouter>
     </Provider>
