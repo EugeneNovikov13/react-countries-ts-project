@@ -2,16 +2,21 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { loadCountries } from './countries-slice';
-import { selectCountriesInfo, selectVisibleCountries } from './countries-selectors';
-import { selectControls } from '../controls/controls-selectors';
-import { RootState, useAppDispatch } from '../../store';
-import { Country } from '../../types';
+import { selectCountriesInfo } from './countries-selectors';
+import { selectRegion, selectSearch } from 'features/controls/controls-selectors';
+import { useAppDispatch } from 'store';
+import { Country } from 'types';
+import { filterVisibleCountries } from './utils/filter-visible-countries';
 
 export const useCountries = (): [Country[], ReturnType<typeof selectCountriesInfo>] => {
   const dispatch = useAppDispatch();
-  const controls = useSelector(selectControls);
-  const countries = useSelector((state: RootState) => selectVisibleCountries(state, controls));
-  const {status, error, qty} = useSelector(selectCountriesInfo);
+
+  const {status, error, list} = useSelector(selectCountriesInfo);
+  const search = useSelector(selectSearch);
+  const region = useSelector(selectRegion);
+
+  const countries = filterVisibleCountries(list, search, region);
+  const qty = list.length;
 
   useEffect(() => {
     if (!qty) {
@@ -19,5 +24,5 @@ export const useCountries = (): [Country[], ReturnType<typeof selectCountriesInf
     }
   }, [qty, dispatch]);
 
-  return [countries, {status, error, qty}];
+  return [countries, {status, error, list}];
 }
