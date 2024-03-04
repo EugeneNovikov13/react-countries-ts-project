@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import { Header } from './components/Header';
 import { Main } from './components/Main';
@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Main>
         <Routes>
-          <Route exact path="/" element={
+            <Route path="/" element={
             <HomePage />
           } />
           <Route path="/country/:name" element={<Details />} />
